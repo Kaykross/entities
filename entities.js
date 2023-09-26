@@ -21,7 +21,7 @@ function range(min=0,max=1000){
 
 //map the range of numbers array into a html and add to the page
 function loadHTML(val){
-    const arr = range(33,6000).filter((i,n,arr)=>i==val?i:val == undefined ?arr: val == "" ?arr:null);
+    const arr = range(33,100).filter((i,n,arr)=>i==val?i:val == undefined ?arr: val == "" ?arr:null);
     if(arr.length == 0){
         sideLinks.innerHTML = '';
         items.innerHTML = `<div class="item">Entity Not Found</div>`;
