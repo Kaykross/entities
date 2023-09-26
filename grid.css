@@ -1,0 +1,198 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    font-family: Blanco,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+    /* font-size: clamp(16px,.8rem + .25vw,20px); */
+}
+body{
+    overflow: hidden;
+    background-color: gainsboro;
+}
+.grid-container{
+    display: grid;
+    grid-template-columns:200px repeat(auto-fill,minmax(150px,1fr));
+    grid-auto-rows: minmax(50px,auto) minmax(100px,1fr) minmax(50px,auto);
+    gap: 1px;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+
+.header{
+    background-color: black;
+    grid-column: 1 / -1;
+    color: white;
+    overflow-x: auto;
+    max-width: 100vw;
+    /* display: grid;
+    grid-auto-flow: column; */
+    /* gap: 10px; */
+    /* align-items: center; */
+    position: relative;
+}
+.header .toolbar{
+    display: grid;
+    grid-auto-flow: column;
+    gap: 15px;
+    min-width: 80px;
+    position: sticky;
+    left: 0;
+    background-color: black;
+    
+}
+.header nav{
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-between;
+    align-content: center;
+    height: 100%;
+    padding: 0 5px;
+    max-width: 100%; 
+}
+header nav *{
+    text-wrap: nowrap;
+}
+.header nav .nav-links{
+    display: grid;
+    grid-auto-flow: column;
+    gap: 8px;
+}
+.sidebar{
+    background-color: white;
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    padding: 10px;
+    transform: translateX(0px);
+    transition: transform 0.4s ease-in-out;
+}
+.sidebar.active{
+    transform: translateX(-200px);
+    transition: transform 0.4s ease-in-out;
+}
+.sidebar .sidebar-content{
+    display: grid;
+    gap: 10px;
+    width: 100%;
+    max-width: 100%;
+    transition: all 0.4s ease-in;
+}
+.sidebar .sidebar-content .search{
+    border-bottom: 1px solid gainsboro;
+    padding: 5px 0 8px 0;
+    width: 100%;
+}
+.sidebar .sidebar-content .search #search{
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid gainsboro;
+    outline: 1px solid gainsboro;
+    width: 100%;
+}
+.sidebar .sidebar-content .side-links{
+    height: 300px;
+    overflow: auto;
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+    padding: 5px;
+    max-width: 100%;
+}
+.sidebar .sidebar-content .side-links .items{
+    display: grid;
+    gap: 5px;
+    grid-template-columns: 1fr;
+    grid-auto-rows: minmax(auto,1fr);
+}
+.sidebar .sidebar-content .side-links .items .item{
+    border: 1px solid gainsboro;
+    padding: 3px;
+    border-radius: 5px;
+    text-align: left;
+    background-color: rgb(255, 255, 255);
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-evenly;
+}
+.sidebar .sidebar-content .side-links .items .item.incorrect{
+    background-color: rgb(250, 141, 141);
+}
+
+.footer{
+    grid-column: 1 / -1;
+    background-color: black;
+    max-width: 100vw;
+}
+.content{
+    background-color: rgb(236, 236, 236);
+    grid-column: 2 / -1;
+    grid-row: 2 / 3;
+    overflow: auto;
+    padding: 5px;
+    transform: translateX(0);
+    transition: transform 0.5s ease-in-out;
+}
+.content.active{
+    position: relative;
+    width: 99dvw;
+    /* left: -200px; */
+    transform: translateX(-200px);
+    /* grid-column: 1 / -1; */
+    /* transition: transform 0.4s ease-in-out; */
+}
+.content .items{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
+    grid-auto-rows: minmax(150px,1fr);
+    gap: 5px;
+}
+.content .items .item{
+    background-color: white;
+    border: 1px solid gainsboro;
+    border-radius: 15px;
+    padding: 10px;
+    display: grid; 
+    justify-content: center;
+}
+.content .items .item *{
+    font-size: 30px;
+    text-align: center;
+}
+
+::-webkit-scrollbar{
+    width: 15px;
+    height: 7px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: rgb(79, 79, 79);
+    border-radius: 30px;
+}
+::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+
+
+@media screen and (max-width: 500px) {
+    .sidebar{
+        position: fixed !important;
+        top: 50px;
+        transform: translateX(-200px);
+        transition: transform 0.4s ease-in-out;
+        height: calc(100% - 100px);
+    }
+    .sidebar.active{
+        transform: translateX(0px);
+        transition: transform 0.4s ease-in-out;
+    }
+    .content{
+        width: 99vw !important;
+        transform: translateX(-200px);
+    }
+    .content.active{
+        transform: translateX(-200px);
+    }
+    .footer{
+        z-index: 1;
+    }
+    
+}

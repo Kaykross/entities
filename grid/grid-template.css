@@ -1,0 +1,49 @@
+.grid-container{
+    display: grid;
+    gap: 1px;
+    grid-template: 
+    "header header header" minmax(60px,100px)
+    "sidebar content content" minmax(200px,1fr)
+    "sidebar aside aside" minmax(200px,1fr)
+    "sidebar article article" minmax(200px,1fr)
+    "footer footer footer" minmax(100px,120px); 
+    height: 100vh;
+}
+.box-1{
+    grid-area: header;
+}
+.box-2{
+    grid-area:sidebar;
+}
+.box-3{
+    grid-area: content;
+}
+.box-4{
+    grid-area: aside;
+}
+.box-5{
+    grid-area: article;
+}
+.box-6{
+    grid-area: footer;
+}
+
+.grid-container .box{
+    background-color: orange;
+}
+
+/* .grid-container{
+    display: grid;
+    grid-template: 150px 1fr / auto ;
+    background-color: rgb(181, 107, 249);
+    padding: 10px;
+    gap: 2px;
+    height: 100vh;
+}
+
+.grid-container div{
+    background-color: orange;
+} */
+
+
+
